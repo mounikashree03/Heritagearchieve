@@ -1,0 +1,415 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-midnight: #061B29;
+    --color-deep-teal: #082C35;
+    --color-antique-gold: #D99A43;
+    --color-bright-gold: #F2B34F;
+    --color-warm-ivory: #FFF7E5;
+    --color-parchment: #F8EFD9;
+    --color-bronze: #A76529;
+    --color-dark-text: #10283A;
+    --color-muted-text: #526575;
+    --color-border-gold: #E8D1A0;
+  }
+
+  body {
+    background-color: var(--color-warm-ivory);
+    color: var(--color-dark-text);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    perspective: 1200px;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  .font-body {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* ==========================================================================
+   3D DESIGN SYSTEM TOKENS & UTILITIES
+   ========================================================================== */
+
+/* Color utilities */
+.bg-midnight { background-color: #061B29; }
+.bg-deep-teal { background-color: #082C35; }
+.bg-warm-ivory { background-color: #FFF7E5; }
+.bg-parchment { background-color: #F8EFD9; }
+.border-gold { border-color: #E8D1A0; }
+.text-antique-gold { color: #D99A43; }
+.text-bright-gold { color: #F2B34F; }
+.text-bronze { color: #A76529; }
+
+/* Metallic gold gradients */
+.gold-gradient-bg {
+  background: linear-gradient(135deg, #F2B34F 0%, #D99A43 50%, #A76529 100%);
+}
+
+.gold-gradient-subtle {
+  background: linear-gradient(135deg, rgba(242, 179, 79, 0.15) 0%, rgba(217, 154, 67, 0.08) 100%);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #FFF7E5 0%, #F2B34F 35%, #D99A43 70%, #A76529 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #FFFDF7 0%, #F8D384 40%, #D99A43 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3D Embossed Heading Effect */
+.text-embossed-light {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.text-embossed-dark {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 0 12px rgba(217, 154, 67, 0.35);
+}
+
+/* Indian Architectural Heritage Patterns */
+.heritage-pattern-dark {
+  background-color: #061B29;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(217, 154, 67, 0.18) 0%, transparent 65%),
+    linear-gradient(to right, rgba(217, 154, 67, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 154, 67, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+}
+
+.heritage-pattern-light {
+  background-color: #FFF7E5;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(217, 154, 67, 0.08) 0%, transparent 65%),
+    linear-gradient(to right, rgba(217, 154, 67, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 154, 67, 0.03) 1px, transparent 1px);
+  background-size: 100% 100%, 36px 36px, 36px 36px;
+}
+
+/* ==========================================================================
+   3D CARD SYSTEM
+   ========================================================================== */
+
+/* 1. Raised 3D Parchment Card */
+.card-3d-parchment {
+  background: linear-gradient(165deg, #FCF5E5 0%, #F8EFD9 70%, #F2E4C4 100%);
+  border: 1px solid #E8D1A0;
+  border-radius: 1rem;
+  box-shadow: 
+    0 1px 2px rgba(6, 27, 41, 0.05),
+    0 4px 12px -2px rgba(6, 27, 41, 0.08),
+    0 10px 24px -4px rgba(167, 101, 41, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(167, 101, 41, 0.08);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.card-3d-parchment:hover {
+  transform: translateY(-6px) translateZ(12px);
+  border-color: #D99A43;
+  box-shadow: 
+    0 2px 4px rgba(6, 27, 41, 0.06),
+    0 12px 28px -4px rgba(6, 27, 41, 0.14),
+    0 20px 40px -8px rgba(217, 154, 67, 0.28),
+    0 0 0 1px rgba(217, 154, 67, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -2px 0 rgba(167, 101, 41, 0.15);
+}
+
+/* 2. Raised 3D Navy / Museum Dark Card */
+.card-3d-dark {
+  background: linear-gradient(165deg, #092638 0%, #061B29 60%, #04121C 100%);
+  border: 1px solid rgba(217, 154, 67, 0.3);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.4),
+    0 12px 32px -4px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(242, 179, 79, 0.25),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease;
+  transform-style: preserve-3d;
+}
+
+.card-3d-dark:hover {
+  transform: translateY(-6px) translateZ(12px);
+  border-color: #F2B34F;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 20px 48px -6px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(217, 154, 67, 0.3),
+    inset 0 1px 0 rgba(242, 179, 79, 0.5);
+}
+
+/* Compatibility alias for existing parchment-card references */
+.parchment-card {
+  background: linear-gradient(165deg, #FCF5E5 0%, #F8EFD9 70%, #F2E4C4 100%);
+  border: 1px solid #E8D1A0;
+  box-shadow: 
+    0 1px 2px rgba(6, 27, 41, 0.05),
+    0 4px 12px -2px rgba(6, 27, 41, 0.08),
+    0 8px 18px -4px rgba(167, 101, 41, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.parchment-card:hover {
+  transform: translateY(-5px) translateZ(8px);
+  border-color: #D99A43;
+  box-shadow: 
+    0 14px 28px -4px rgba(6, 27, 41, 0.12),
+    0 8px 16px -2px rgba(217, 154, 67, 0.22),
+    0 0 0 1px rgba(217, 154, 67, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* ==========================================================================
+   3D METALLIC BUTTONS
+   ========================================================================== */
+
+/* Gold 3D Primary Button */
+.btn-gold-3d {
+  background: linear-gradient(180deg, #FAD68A 0%, #F2B34F 25%, #D99A43 70%, #B87627 100%);
+  color: #061B29;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid #FFE4A3;
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(217, 154, 67, 0.4),
+    0 8px 20px -2px rgba(167, 101, 41, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75),
+    inset 0 -2px 1px rgba(130, 75, 18, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-gold-3d:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    0 8px 20px rgba(217, 154, 67, 0.55),
+    0 14px 28px -2px rgba(167, 101, 41, 0.45),
+    0 0 20px rgba(242, 179, 79, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -2px 1px rgba(130, 75, 18, 0.5);
+}
+
+.btn-gold-3d:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.2),
+    0 2px 8px rgba(217, 154, 67, 0.35),
+    inset 0 2px 2px rgba(130, 75, 18, 0.5);
+}
+
+/* Secondary 3D Pill Button (Transparent/Dark with Gold Rim) */
+.btn-dark-3d {
+  background: linear-gradient(180deg, #0A323D 0%, #082C35 50%, #061B29 100%);
+  color: #FFF7E5;
+  font-weight: 600;
+  border-radius: 9999px;
+  border: 1px solid rgba(217, 154, 67, 0.6);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(242, 179, 79, 0.3),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dark-3d:hover {
+  transform: translateY(-2px);
+  border-color: #F2B34F;
+  color: #F2B34F;
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.5),
+    0 0 16px rgba(217, 154, 67, 0.35),
+    inset 0 1px 0 rgba(242, 179, 79, 0.6);
+}
+
+.btn-dark-3d:active {
+  transform: translateY(1px);
+  box-shadow: 
+    0 1px 3px rgba(0, 0, 0, 0.4),
+    inset 0 2px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Parchment 3D Action Button */
+.btn-parchment-3d {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8EFD9 60%, #EAD8B2 100%);
+  color: #061B29;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  border: 1px solid #D99A43;
+  box-shadow: 
+    0 2px 6px rgba(6, 27, 41, 0.08),
+    0 6px 14px -2px rgba(167, 101, 41, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(167, 101, 41, 0.15);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-parchment-3d:hover {
+  transform: translateY(-2px);
+  border-color: #A76529;
+  color: #A76529;
+  box-shadow: 
+    0 4px 12px rgba(6, 27, 41, 0.12),
+    0 10px 20px -2px rgba(217, 154, 67, 0.25),
+    inset 0 1px 0 #FFF;
+}
+
+.btn-parchment-3d:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 2px rgba(167, 101, 41, 0.25);
+}
+
+/* ==========================================================================
+   3D STATS STRIP & BADGES
+   ========================================================================== */
+.stat-pill-3d {
+  background: linear-gradient(180deg, rgba(8, 44, 53, 0.8) 0%, rgba(6, 27, 41, 0.95) 100%);
+  border: 1px solid rgba(217, 154, 67, 0.35);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(242, 179, 79, 0.25),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+}
+
+.stat-pill-3d:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: rgba(242, 179, 79, 0.7);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(217, 154, 67, 0.3),
+    inset 0 1px 0 rgba(242, 179, 79, 0.5);
+}
+
+/* 3D Category Tile */
+.category-tile-3d {
+  background: linear-gradient(165deg, #FCF5E5 0%, #F8EFD9 70%, #F0E0C0 100%);
+  border: 1px solid #E8D1A0;
+  border-radius: 1rem;
+  box-shadow: 
+    0 2px 6px rgba(6, 27, 41, 0.04),
+    0 8px 16px -3px rgba(167, 101, 41, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -2px 0 rgba(167, 101, 41, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.category-tile-3d:hover {
+  transform: translateY(-5px) translateZ(8px);
+  border-color: #D99A43;
+  box-shadow: 
+    0 4px 12px rgba(6, 27, 41, 0.08),
+    0 16px 28px -4px rgba(217, 154, 67, 0.25),
+    0 0 0 1px rgba(217, 154, 67, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* 3D Dropdown & Input Controls */
+.input-3d {
+  background: #FFFFFF;
+  border: 1px solid #E8D1A0;
+  box-shadow: 
+    inset 0 2px 4px rgba(6, 27, 41, 0.04),
+    0 1px 2px rgba(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.input-3d:focus {
+  border-color: #D99A43;
+  outline: none;
+  box-shadow: 
+    0 0 0 3px rgba(217, 154, 67, 0.2),
+    inset 0 1px 2px rgba(6, 27, 41, 0.05);
+}
+
+/* 3D Historical Timeline Nodes */
+.timeline-node-3d {
+  background: linear-gradient(145deg, #0A343F 0%, #061B29 100%);
+  border: 2px solid #D99A43;
+  box-shadow: 
+    0 0 0 4px rgba(6, 27, 41, 0.8),
+    0 0 18px rgba(217, 154, 67, 0.4),
+    inset 0 1px 0 rgba(242, 179, 79, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-node-3d:hover {
+  transform: scale(1.12) translateY(-2px);
+  border-color: #F2B34F;
+  box-shadow: 
+    0 0 0 4px rgba(6, 27, 41, 0.9),
+    0 0 28px rgba(242, 179, 79, 0.65),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Custom 3D scrollbars */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #061B29;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0A323D 0%, #082C35 100%);
+  border: 1px solid rgba(217, 154, 67, 0.4);
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(242, 179, 79, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #F2B34F 0%, #D99A43 100%);
+}
+
+/* Respect user reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-3d-parchment:hover,
+  .card-3d-dark:hover,
+  .parchment-card:hover,
+  .btn-gold-3d:hover,
+  .category-tile-3d:hover {
+    transform: none !important;
+  }
+}
